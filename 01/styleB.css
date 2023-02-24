@@ -25,6 +25,7 @@ body {
 	padding-left: 10px;
 	text-align: left;
 	background-color: #eeeff2;
+	white-space: nowrap;
 }
 .A:hover {
 	background-color: yellow;
@@ -39,6 +40,7 @@ body {
 	padding-left: 10px;
 	text-align: left;
 	background-color: #eeeff2;
+	white-space: nowrap
 }
 .B:hover {
 	background-color: yellow;
@@ -58,6 +60,7 @@ body {
 	padding-left: 10px;
 	text-align: left;
 	background-color: #eeeff2;
+	white-space: nowrap
 }
 .F:hover {
 	background-color: yellow;
