@@ -1,16 +1,16 @@
 body {
-	font-family: Tahoma, Arial, sans-serif;
+	font-family: Tahoma;
 	font-size: 40px;
 }
 .flex-container1 {
-	display: -webkit-flex;
+	display: flex;
 	flex-direction: row;
 	position: fixed;
 	top: 10;
 	left: 10;
 }
 .flex-container2 {
-	display: -webkit-flex;
+	display: flex;
 	flex-direction: row;
 	position: fixed;
 	bottom: 0;
@@ -28,8 +28,8 @@ body {
 	white-space: nowrap;
 }
 .A:hover {
-	background-color: yellow;
-	cursor: pointer;
+	background-color: goldenrod;
+	cursor: hand;
 }
 .B {
 	width: 90px;
@@ -43,8 +43,8 @@ body {
 	white-space: nowrap
 }
 .B:hover {
-	background-color: yellow;
-	cursor: pointer;
+	background-color: goldenrod;
+	cursor: hand;
 }
 .space {
 	width: 90px;
@@ -63,6 +63,6 @@ body {
 	white-space: nowrap
 }
 .F:hover {
-	background-color: yellow;
-	cursor: pointer;
+	background-color: goldenrod;
+	cursor: hand;
 }
