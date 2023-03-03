@@ -6,8 +6,8 @@ body {
 	display: flex;
 	flex-direction: row;
 	position: fixed;
-	top: 10;
-	left: 10;
+	top: 10px;
+	left: 10px;
 }
 .flex-container2 {
 	display: flex;
