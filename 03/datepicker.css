@@ -1,0 +1,59 @@
+/* Reset default styles for the date picker */
+.datepicker {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Style for the month and year header */
+.datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+/* Style for the previous and next month buttons */
+.datepicker-header .prev-month-btn,
+.datepicker-header .next-month-btn {
+    cursor: pointer;
+    user-select: none;
+}
+/* CSS styles for positioning the buttons */
+.calendar-btn {
+    display: flex;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+/* CSS style for day numbers in previous month */
+.prev-month {
+    color: #777; /* Set lighter color for day numbers from previous month */
+}
+/* CSS style for day numbers in next month */
+.next-month {
+    color: #777; /* Set lighter color for day numbers from next month */
+}
+
+/* Style for the month and year display */
+.datepicker-header .month-year {
+    font-size: 18px;
+}
+
+
+/* Style for the day cells */
+.datepicker-day-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+
+
+
+.hover {
+    background-color: #87CEFA;
+    cursor: pointer;
+}
