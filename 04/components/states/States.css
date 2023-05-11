@@ -1,0 +1,26 @@
+/*
+CSS for the Project 4, Problem 2 States component
+
+Since CSS uses a global name space for classes we should use names starting with
+states- here.
+*/
+/* components/states/States.css */
+.states-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.states-list {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.states-list li {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
