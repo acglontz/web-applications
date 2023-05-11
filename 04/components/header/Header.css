@@ -1,0 +1,53 @@
+.header {
+    background: linear-gradient(to right, teal, mediumpurple);
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.header img {
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.header .name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header .motto {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.header .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
