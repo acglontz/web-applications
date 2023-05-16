@@ -1,72 +1,48 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import {
     Divider,
-    List,
     Typography,
+    Button
 } from '@material-ui/core';
-import {
-    ListItem,
-    ListItemText
-}
-    from '@material-ui/core';
-import { Link as RouterLink } from "react-router-dom";
-import './userList.css';
+import './userDetail.css';
 
 /**
- * Define UserList, a React component of project #5
+ * Define UserDetail, a React component of project #5
  */
-class UserList extends React.Component {
+class UserDetail extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    getUserList() {
-        const formattedUserList = [];
-        const users = window.models.userListModel();
-        if(users) {
-            for(let i = 0; i < users.length; i++) {
-                const user = users[i];
-                const userid = user._id;
-                formattedUserList.push((
-                    <ListItem
-                        key={i}
-                        button onClick={this.props.onUserChange(userid)}
-                        component={RouterLink}
-                        to={'/users/' + userid}
-                    >
-                        <ListItemText primary={user.first_name + " " + user.last_name}/>
-                    </ListItem>
-                ));
-                formattedUserList.push((<Divider />));
-            }
-        } else {
-            formattedUserList.push((
-                <ListItem
-                    key="Error"
-                    alignItems="flex-start"
-                    justify="center"
-                >
-                    <ListItemText primary={"Error: List Not Found"} />
-                </ListItem>
-            ));
-            formattedUserList.push((<Divider />))
-        }
-
-        return formattedUserList;
-    }
-
     render() {
+        const user = window.models.userModel(this.props.match.params.userId);
+        const fullname = user.first_name + ' ' + user.last_name;
+
         return (
             <div>
-                <Typography variant="h5">
-                    Users
+                <Typography variant="h5"> {fullname} </Typography>
+                <Typography variant="subtitle1">
+                    {user.location}
                 </Typography>
-                <List>
-                    {this.getUserList()}
-                </List>
+                <Typography variant="body1">
+                    <b>Occupation:</b> {user.occupation}
+                </Typography>
+                <Typography variant="body1">
+                    <b className="userDetail-description">Description: </b>
+                    <span className="userDetail-description">{user.description}</span>
+                </Typography>
+                <Divider />
+                <Button
+                    component={RouterLink}
+                    to={'/users/' + user._id + '/photos'}
+                >
+                    Photo Gallery
+                </Button>
             </div>
         );
+
     }
 }
 
-export default UserList;
+export default UserDetail;
