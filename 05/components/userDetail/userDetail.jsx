@@ -1,85 +1,72 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import {
     Divider,
+    List,
     Typography,
-    Button
 } from '@material-ui/core';
-import './userDetail.css';
-import FetchModel from "../../lib/fetchModelData";
+import {
+    ListItem,
+    ListItemText
+}
+    from '@material-ui/core';
+import { Link as RouterLink } from "react-router-dom";
+import './userList.css';
 
 /**
- * Define UserDetail, a React component of project #5
+ * Define UserList, a React component of project #5
  */
-class UserDetail extends React.Component {
+class UserList extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            user: null,
-            error: null,
-            isLoading: true
-        };
     }
 
-    componentDidMount() {
-        // Fetch the user data from the server
-        FetchModel(`/api/users/${this.props.match.params.userId}`)
-            .then(res => res.json())
-            .then(
-                result => {
-                    // Set the state with the user data
-                    this.setState({
-                        user: result,
-                        isLoading: false
-                    });
-                },
-                error => {
-                    // Set the state with the error message
-                    this.setState({
-                        error,
-                        isLoading: false
-                    });
-                }
-            );
+    getUserList() {
+        const formattedUserList = [];
+        const users = window.models.userListModel();
+        if(users) {
+            for(let i = 0; i < users.length; i++) {
+                const user = users[i];
+                const userid = user._id;
+                formattedUserList.push((
+                    <ListItem
+                        key={i}
+                        button onClick={this.props.onUserChange(userid)}
+                        component={RouterLink}
+                        to={'/users/' + userid}
+                    >
+                        <ListItemText primary={user.first_name + " " + user.last_name}/>
+                    </ListItem>
+                ));
+                formattedUserList.push((<Divider />));
+            }
+        } else {
+            formattedUserList.push((
+                <ListItem
+                    key="Error"
+                    alignItems="flex-start"
+                    justify="center"
+                >
+                    <ListItemText primary={"Error: List Not Found"} />
+                </ListItem>
+            ));
+            formattedUserList.push((<Divider />))
+        }
+
+        return formattedUserList;
     }
 
     render() {
-        const { user, error, isLoading } = this.state;
-
-        if (isLoading) {
-            return <div>Loading...</div>;
-        }
-
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        }
-
-        const fullname = user.first_name + ' ' + user.last_name;
-
         return (
             <div>
-                <Typography variant="h5"> {fullname} </Typography>
-                <Typography variant="subtitle1">
-                    {user.location}
+                <Typography variant="h5">
+                    Users
                 </Typography>
-                <Typography variant="body1">
-                    <b>Occupation:</b> {user.occupation}
-                </Typography>
-                <Typography variant="body1">
-                    <b className="userDetail-description">Description: </b>
-                    <span className="userDetail-description">{user.description}</span>
-                </Typography>
-                <Divider />
-                <Button
-                    component={RouterLink}
-                    to={'/users/' + user._id + '/photos'}
-                >
-                    Photo Gallery
-                </Button>
+                <List>
+                    {this.getUserList()}
+                </List>
             </div>
         );
     }
 }
 
-export default UserDetail;
+export default UserList;
