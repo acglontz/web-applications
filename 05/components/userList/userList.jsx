@@ -1,4 +1,4 @@
-ort React from 'react';
+import React from 'react';
 import {
     Divider,
     List,
@@ -7,10 +7,10 @@ import {
 import {
     ListItem,
     ListItemText
-} from '@material-ui/core';
+}
+    from '@material-ui/core';
 import { Link as RouterLink } from "react-router-dom";
 import './userList.css';
-import FetchModel from '../../lib/fetchModelData';
 
 /**
  * Define UserList, a React component of project #5
@@ -18,22 +18,11 @@ import FetchModel from '../../lib/fetchModelData';
 class UserList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            users: []
-        }
-    }
-
-    componentDidMount() {
-        FetchModel('/user/list').then(response => {
-            this.setState({users: response.data});
-        }).catch(error => {
-            console.log('Error fetching user list:', error);
-        });
     }
 
     getUserList() {
         const formattedUserList = [];
-        const users = this.state.users;
+        const users = window.models.userListModel();
         if(users) {
             for(let i = 0; i < users.length; i++) {
                 const user = users[i];
